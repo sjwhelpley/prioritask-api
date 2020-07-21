@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "priori-task.netlify.app"
 };
 
 app.use(cors(corsOptions));
