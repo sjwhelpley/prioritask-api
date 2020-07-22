@@ -5,12 +5,6 @@ module.exports = app => {
   
     // Create a new Task
     router.post("/", tasks.create);
-  
-    // Retrieve all Tasks
-    router.get("/", tasks.findAll);
-  
-    // Retrieve a single Task with id
-    router.get("/:id", tasks.findOne);
 
     // Retrieve all Tasks due today
     router.get("/today", tasks.findDueToday);
@@ -20,6 +14,12 @@ module.exports = app => {
 
     // Retrieve all Tasks uncomplete
     router.get("/uncomplete", tasks.findUncomplete);
+  
+    // Retrieve all Tasks
+    router.get("/", tasks.findAll);
+  
+    // Retrieve a single Task with id
+    router.get("/:id", tasks.findOne);
   
     // Update a Task with id
     router.put("/:id", tasks.update);
