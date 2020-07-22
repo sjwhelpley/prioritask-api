@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     // Create a Task
     const task = new Task({
         title: req.body.title,
-        dueDate: req.body.dueDate,
+        dueDate: new Date(req.body.dueDate),
         subTasks: req.body.subTasks,
         description: req.body.description,
         completed: req.body.completed ? req.body.completed : false
@@ -22,14 +22,14 @@ exports.create = (req, res) => {
     task
         .save(task)
         .then(data => {
-        res.send(data);
+            res.send(data);
         })
         .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while creating the Task."
+            res.status(500).send({
+                message:
+                err.message || "Some error occurred while creating the Task."
+            });
         });
-    });
 };
 
 // Retrieve all Tasks from the database
@@ -66,7 +66,7 @@ exports.findOne = (req, res) => {
 // Find Tasks due today
 exports.findDueToday = (req, res) => {
     const date = req.query.date;
-    var condition = { dueDate: date };
+    var condition = { dueDate: new Date(date) };
 
     Task.find(condition)
         .then(data => {
@@ -83,7 +83,7 @@ exports.findDueToday = (req, res) => {
 // Find upcoming Tasks
 exports.findDueUpcoming = (req, res) => {
     const date = req.query.date;
-    var condition = { dueDate: { $gt: date } };
+    var condition = { dueDate: { $gt: new Date(date) } };
 
     Task.find(condition)
         .then(data => {
