@@ -66,7 +66,8 @@ exports.findOne = (req, res) => {
 // Find Tasks due today
 exports.findDueToday = (req, res) => {
     const date = req.query.date;
-    var condition = { dueDate: new Date(date) };
+    const dateObject = new Date(date);
+    var condition = { dueDate: dateObject };
 
     Task.find(condition)
         .then(data => {
