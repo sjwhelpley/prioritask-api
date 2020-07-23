@@ -9,10 +9,14 @@ exports.create = (req, res) => {
         return;
     }
 
+    var dueDate;
+    if(req.body.dueDate === null) dueDate = null;
+    else dueDate = new Date(req.body.dueDate);
+
     // Create a Task
     const task = new Task({
         title: req.body.title,
-        dueDate: new Date(req.body.dueDate),
+        dueDate: dueDate,
         subTasks: req.body.subTasks,
         description: req.body.description,
         completed: req.body.completed ? req.body.completed : false
@@ -67,6 +71,7 @@ exports.findOne = (req, res) => {
 exports.findDueToday = (req, res) => {
     const date = req.query.date;
     const dateObject = new Date(date);
+    
     var condition = { dueDate: dateObject };
 
     Task.find(condition)
@@ -84,7 +89,7 @@ exports.findDueToday = (req, res) => {
 // Find upcoming Tasks
 exports.findDueUpcoming = (req, res) => {
     const date = req.query.date;
-    var condition = { dueDate: { $gt: new Date(date) } };
+    var condition = { dueDate: { $gte: new Date(date) } };
 
     Task.find(condition)
         .then(data => {
