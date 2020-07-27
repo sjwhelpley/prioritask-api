@@ -17,7 +17,6 @@ exports.create = (req, res) => {
     const task = new Task({
         title: req.body.title,
         dueDate: dueDate,
-        subTasks: req.body.subTasks,
         description: req.body.description,
         completed: req.body.completed ? req.body.completed : false
     });

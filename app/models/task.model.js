@@ -5,7 +5,6 @@ module.exports = mongoose => {
         {
           title: String,
           dueDate: Date,
-          subTasks: [String],
           description: String,
           completed: Boolean
         },
