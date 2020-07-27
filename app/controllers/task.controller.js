@@ -38,7 +38,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Tasks from the database
 exports.findAll = (req, res) => {
-    Task.find({})
+    Task.find({}).sort({ dueDate: 1 })
         .then(data => {
             res.send(data);
         })
@@ -91,7 +91,7 @@ exports.findDueUpcoming = (req, res) => {
     const date = req.query.date;
     var condition = { dueDate: { $gte: new Date(date) } };
 
-    Task.find(condition)
+    Task.find(condition).sort({ dueDate: 1 })
         .then(data => {
             res.send(data);
         })
