@@ -70,8 +70,6 @@ exports.findOne = (req, res) => {
 exports.findDueToday = (req, res) => {
     const date = req.query.date;
     const dateObject = new Date(date);
-
-    console.log(dateObject);
     
     var condition = { dueDate: dateObject };
 
