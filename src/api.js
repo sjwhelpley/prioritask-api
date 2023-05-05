@@ -1,7 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const body_parser = require("body-parser");
-const cors = require("cors")
+const cors = require("cors");
 
 // Create an instance of the Express app
 const app = express();
