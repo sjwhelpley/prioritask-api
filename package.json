@@ -4,7 +4,9 @@
   "description": "Node.js Restful CRUD API with Node.js, Expiress and MongoDB",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "author": "Samantha Whelpley",
   "license": "ISC",
@@ -12,7 +14,9 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.9.25"
+    "express": "^4.18.2",
+    "mongoose": "^5.9.25",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^3.2.0"
   }
 }
