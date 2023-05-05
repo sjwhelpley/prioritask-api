@@ -21,5 +21,5 @@ module.exports = app => {
     // Delete all SubTasks
     router.delete("/", subtasks.deleteAll);
   
-    app.use('/api/subtasks', router);
+    app.use('/.netlify/functions/api/subtasks', router);
   };

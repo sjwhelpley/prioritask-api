@@ -30,5 +30,5 @@ module.exports = app => {
     // Delete all Tasks
     router.delete("/", tasks.deleteAll);
   
-    app.use('/api/tasks', router);
+    app.use('/.netlify/functions/api/tasks', router);
   };
