@@ -1,6 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const body_parser = require("body-parser");
+const cors = require("cors")
 
 // Create an instance of the Express app
 const app = express();
@@ -13,6 +14,12 @@ app.use(body_parser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(body_parser.urlencoded({ extended: true }));
+
+var corsOptions = {
+  origin: "https://priori-task.netlify.app"
+};
+
+app.use(cors(corsOptions));
 
 const db = require("./app/models");
 db.mongoose
